@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- place fav icons here -->
+
+  <title>History Center of the Church in Manila</title>
+  <meta name="description" content="An audio guide for History Center of the Church in Manila
+">
+
+  <!-- Twitter cards and OG Image for Facebook -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="churchinmanila" />
+  <meta name="twitter:creator" content="churchinmanila" />
+  <meta name="twitter:title" content="History Center of the Church in Manila" />
+  <meta name="twitter:description" content="An audio guide for History Center of the Church in Manila
+" />
+  
+  <meta name="og:image" content="http://localhost:4000/en/assets/img/meta/og-image.jpg" />
+  <meta name="twitter:image" content="http://localhost:4000/en/assets/img/meta/og-image.jpg" />
+
+  <!-- Canonical urls -->
+
+  <link rel="canonical" href="http://localhost:4000/en/">
+  <link rel="alternate" type="application/rss+xml" title="History Center of the Church in Manila" href="http://localhost:4000/en/feed.xml">
+
+  <!-- Stylesheets -->
+
+  <link rel="stylesheet" type="text/css" href="/en/assets/js/slick.css" />
+  <link rel="stylesheet" type="text/css" href="/en/assets/js/slick-theme.css" />
+
+  <!-- jQuery -->
+  <script src="/en/assets/js/jquery-1.12.3.min.js"></script>
+  <script src="/en/assets/js/slick.min.js"></script>
+
+  <!-- jPlayer -->
+  <script src="/en/assets/js/jplayer/jquery.jplayer.min.js"></script>
+
+  <!-- CSS for this web app -->
+  <link rel='stylesheet' href='/en/assets/css/main.css?v=1.0.0.20'>
+
+  <script type="text/javascript">
+
+// The JS code here is render blocking. We liked it this way, but you might want to change it if this sort of thing
+// worries you. More info on this here: https://varvy.com/pagespeed/render-blocking.html
+// The advantage of render blocking the below code is to prevent some flicker on page-load to make the audio guide
+// feel a little more 'app-like', but you mightn't find it necessary.
+
+
+// add fixedPosition support check, pulled from jQuery Mobile
+// This isn't a true check, but just flagging browsers with known issues with fixed positioning.
+// This is preferable to attempting to do a real check given the current widespread support for
+// Fixed positioning, so the devices that still have problems with it are fairly well known
+
+function fixedPosition() {
+  var w = window,
+    ua = navigator.userAgent,
+    platform = navigator.platform,
+    // Rendering engine is Webkit, and capture major version
+    wkmatch = ua.match( /AppleWebKit\/([0-9]+)/ ),
+    wkversion = !!wkmatch && wkmatch[ 1 ],
+    ffmatch = ua.match( /Fennec\/([0-9]+)/ ),
+    ffversion = !!ffmatch && ffmatch[ 1 ],
+    operammobilematch = ua.match( /Opera Mobi\/([0-9]+)/ ),
+    omversion = !!operammobilematch && operammobilematch[ 1 ];
+
+  if (
+    // iOS 4.3 and older : Platform is iPhone/Pad/Touch and Webkit version is less than 534 (ios5)
+    ( ( platform.indexOf( "iPhone" ) > -1 || platform.indexOf( "iPad" ) > -1  || platform.indexOf( "iPod" ) > -1 ) && wkversion && wkversion < 534 ) ||
+    // Opera Mini
+    ( w.operamini && ({}).toString.call( w.operamini ) === "[object OperaMini]" ) ||
+    ( operammobilematch && omversion < 7458 ) ||
+    //Android lte 2.1: Platform is Android and Webkit version is less than 533 (Android 2.2)
+    ( ua.indexOf( "Android" ) > -1 && wkversion && wkversion < 533 ) ||
+    // Firefox Mobile before 6.0 -
+    ( ffversion && ffversion < 6 ) ||
+    // WebOS less than 3
+    ( "palmGetResource" in window && wkversion && wkversion < 534 ) ||
+    // MeeGo
+    ( ua.indexOf( "MeeGo" ) > -1 && ua.indexOf( "NokiaBrowser/8.5.0" ) > -1 ) ) {
+    return false;
+  }
+
+  return true;
+}
+
+$.extend( $.support, {
+  fixedPosition: fixedPosition()
+});
+
+// fixed position audio player
+
+if ($.support.fixedPosition) {
+ $("<style>").prop("type", "text/css").html("\
+    .audio-footer-container { \
+      position: fixed; \
+    }")
+  .appendTo("head");
+}
+
+// Prevent links from opening in a new window when viewing from iOS home screen
+// Helps ensure a more 'web appy' expierence.
+// Adjusted from gist posted by Github user @irae on @kylebarrow's Gist at:
+// https://gist.github.com/kylebarrow/1042026
+// this snippet available at: https://gist.github.com/irae/1042167
+// It's a whole document event listener, so will continue to work even if other links are added to the DOM after
+// the initial pageload. The while loop ensures that it bubbles up to hit any anchor links that have been clicked.
+
+  (function(document,navigator,standalone) {
+    // prevents links from apps from oppening in mobile safari
+    // this javascript must be the first script in your <head>
+    if ((standalone in navigator) && navigator[standalone]) {
+      var curnode, location=document.location, stop=/^(a|html)$/i;
+      document.addEventListener('click', function(e) {
+        curnode=e.target;
+        
+        while (!(stop).test(curnode.nodeName)) {
+          curnode=curnode.parentNode;
+        }
+        // Condidions to do this only on links to your own app
+        // if you want all links, use if('href' in curnode) instead.
+        if (curnode.className.indexOf("dont-use-ios-override") == -1) {
+          if(
+            'href' in curnode && // is a link
+            (chref=curnode.href).replace(location.href,'').indexOf('#') && // is not an anchor
+            ( !(/^[a-z\+\.\-]+:/i).test(chref) ||                       // either does not have a proper scheme (relative links)
+              chref.indexOf(location.protocol+'//'+location.host)===0 ) // or is in the same protocol and domain
+          ) {
+            e.preventDefault();
+            location.href = curnode.href;
+          }
+        }
+      },false);
+    }
+  })(document,window.navigator,'standalone');
+
+// Initialise jPlayer, grabbed the MP3 source file from the audio element on the page.
+$(document).ready(function(){
+
+  $("#jquery_jplayer_1").jPlayer({
+    ready: function () {
+      $("#episode-element").hide();
+      $(this).jPlayer("setMedia", {
+        title: "",
+        mp3: $("#episode-source").attr("src")
+      });
+
+    },
+    swfPath: "/en/assets/js/jplayer",
+    supplied: "mp3",
+    wmode: "window",
+    useStateClassSkin: true,
+    autoBlur: false,
+    smoothPlayBar: true,
+    keyEnabled: true,
+    remainingDuration: true,
+    toggleDuration: true
+  });
+});
+
+  </script>
+    <!-- JS for this web app -->
+  <script src="/en/assets/js/main.js?v=1.0.0.20"></script>
+</head>
+
+
+  <body>
+    <!-- Google Tag Manager -->
+
+<!-- drop in your Google Tag Manager or Analytics snippet here! -->
+
+<!-- End Google Tag Manager -->
+    <header class="site-header">
+  
+  <a class="site-title" href="/en/">
+    <img src="/en/assets/img/logo/history center logo.png" alt="History Center of the Church in Manila logo" class="site-logo"/>
+  </a>
+  
+</header>
+
+
+    <div class="page-content main-page">
+      <div class="wrapper">
+        <div class="home">
+
+  <p>Select an audio guide stop to begin.</p>
+
+  <ul class="post-list">
+    
+    <li>
+        <a class="post-link" href="/en/stops/1/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">1</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/2/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">2</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/3/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">3</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/4/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">4</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/5/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">5</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/6/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">6</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/7/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">7</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/8/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">8</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/9/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">9</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/10/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">10</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/11/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">11</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/12/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">12</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/13/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">13</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/14/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">14</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/15/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">15</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/16/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">16</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/17/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">17</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/18/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">18</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/19/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">19</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/20/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">20</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/21/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">21</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/22/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">22</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/23/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">23</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/24/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">24</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/25/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">25</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/26/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">26</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/27/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">27</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/28/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">28</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/29/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">29</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/30/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">30</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/31/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">31</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/32/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">32</span>
+        </a>
+      </li><li>
+        <a class="post-link" href="/en/stops/33/" style="background-image: url('/en/assets/img/icons/headphones-dark.png');">
+          <span class="post-item">33</span>
+        </a>
+      </li>
+  </ul>
+
+<!--
+
+For reference: This is a list of all the stops and titles in this audio guide
+
+
+    
+Stop #: 1
+Section Title: Before 1900
+Title: The Spread of Christianity and the Creeping in of Degradation
+      
+Stop #: 2
+Section Title: Before 1900
+Title: The Work of Lord's Recovery
+      
+Stop #: 3
+Section Title: Before 1900
+Title: The Work of Lord's Recovery
+      
+Stop #: 4
+Section Title: 1920s - 1930s
+Title: The Flow of the Lord's Recovery - China
+      
+Stop #: 5
+Section Title: 1920s - 1930s
+Title: The Flow of the Lord's Recovery - China
+      
+Stop #: 6
+Section Title: 1920s - 1930s
+Title: The Flow of the Lord's Recovery - Philippines
+      
+Stop #: 7
+Section Title: 1920s - 1930s
+Title: The Flow of the Lord's Recovery - Philippines
+      
+Stop #: 8
+Section Title: 1937
+Title: Watchman Nee's Visits to Europe and America
+      
+Stop #: 9
+Section Title: 1937
+Title: Watchman Nee's Visit to the Philippines
+      
+Stop #: 10
+Section Title: 1937
+Title: Watchman Nee's Visit to the Philippines
+      
+Stop #: 11
+Section Title: 1937
+Title: Watchman Nee's Visit to the Philippines
+      
+Stop #: 12
+Section Title: 1937
+Title: Watchman Nee's Visit to the Philippines
+      
+Stop #: 13
+Section Title: Late 1930s - 1940s
+Title: Interruption by World War II
+      
+Stop #: 14
+Section Title: Late 1930s - 1940s
+Title: Interruption by World War II
+      
+Stop #: 15
+Section Title: Late 1930s - 1940s
+Title: Interruption by World War II
+      
+Stop #: 16
+Section Title: Late 1930s - 1940s
+Title: Interruption by World War II
+      
+Stop #: 17
+Section Title: 1945 - 1950s
+Title: Post-War Manila
+      
+Stop #: 18
+Section Title: 1945 - 1950s
+Title: Post-War Manila
+      
+Stop #: 19
+Section Title: 1945 - 1950s
+Title: Post-War Manila
+      
+Stop #: 20
+Section Title: 1945 - 1950s
+Title: Post-War Manila
+      
+Stop #: 21
+Section Title: 1950 - 1961
+Title: Witness Lee's Labor in Manila
+      
+Stop #: 22
+Section Title: 1950 - 1961
+Title: Witness Lee's Labor in Manila
+      
+Stop #: 23
+Section Title: 1950 - 1961
+Title: Witness Lee's Labor in Manila
+      
+Stop #: 24
+Section Title: 1950 - 1961
+Title: Witness Lee's Labor in Manila
+      
+Stop #: 25
+Section Title: 1950 - 1961
+Title: Witness Lee's Labor in Manila
+      
+Stop #: 26
+Section Title: 1950 - 1961
+Title: 1961 Turmoil in Manila
+      
+Stop #: 27
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 28
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 29
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 30
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 31
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 32
+Section Title: 1969 and Beyond
+Title: A New Beginning
+      
+Stop #: 33
+Section Title: Concluding Word
+Title: 
+      
+
+-->
+  
+<!--
+  <p class="rss-subscribe">subscribe <a href="/en/feed.xml">via RSS</a></p>
+-->
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="partner-logos">
+      <!-- replace logos here! -->
+      <a href="https://churchinmanila.org" target="_blank">
+        <img class="logo" src="/en/assets/img/logo/church in manila.png"/>
+      </a>
+    </div>
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
