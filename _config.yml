@@ -11,14 +11,14 @@ email: info@churchinmanila.org
 description: > # this means to ignore newlines until "baseurl:"
   An audio guide for History Center of the Church in Manila
 baseurl: "" # the subpath of your site, e.g. /blog
-audio_path: "/audio/"
-episode_hero_path: "/assets/img/stops/"
+audio_path: ""
+episode_hero_path: ""
 url: "https://historycenter.churchinmanila.org/" # the base hostname & protocol for your site
 logo: "/assets/img/logo/history center logo.png"
 twitter_username: churchinmanila
 github_username:  churchinmanila
-menu_heading: "Select another stop"
-index_page_text: "Select an audio guide stop to begin."
+menu_heading: ""
+index_page_text: ""
 headphones_icon_color: "/assets/img/icons/headphones-dark.png"
 headphones_icon_light: "/assets/img/icons/headphones-light.png"
 
@@ -26,4 +26,4 @@ headphones_icon_light: "/assets/img/icons/headphones-light.png"
 markdown: kramdown
 
 # Version settings (version number below is used for cache busting CSS and JS)
-version_number: 1.0.0.1
+version_number: 1.0.0.2
