@@ -4,10 +4,10 @@
     <title>History Center of the Church in Manila</title>
     <description>An audio guide for History Center of the Church in Manila
 </description>
-    <link>http://localhost:4000/en/</link>
-    <atom:link href="http://localhost:4000/en/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Jun 2024 09:10:55 +0800</pubDate>
-    <lastBuildDate>Thu, 27 Jun 2024 09:10:55 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 27 Jun 2024 17:27:20 +0800</pubDate>
+    <lastBuildDate>Thu, 27 Jun 2024 17:27:20 +0800</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
   </channel>
