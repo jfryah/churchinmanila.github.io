@@ -33,7 +33,7 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font: 400 17px/1.5 "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 400 16px/1.5 "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ffffff;
   background-color: #050b18;
   -webkit-text-size-adjust: 100%;
@@ -70,7 +70,7 @@ figure > img {
 }
 
 figcaption {
-  font-size: 14.875px;
+  font-size: 14px;
 }
 
 /**
@@ -96,12 +96,12 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #0055ff;
+  color: #2A4FA0;
   text-decoration: none;
   transition: 0.2s;
 }
 a:hover {
-  color: #99bbff;
+  color: #84a1df;
   text-decoration: none;
 }
 
@@ -109,7 +109,7 @@ a:hover {
  * Blockquotes
  */
 blockquote {
-  color: #6699ff;
+  color: #5c82d4;
 }
 blockquote > :last-child {
   margin-bottom: 0;
@@ -121,7 +121,7 @@ blockquote > :last-child {
 pre,
 code {
   font-size: 15px;
-  border: 1px solid #ccddff;
+  border: 1px solid #adc0e9;
   border-radius: 3px;
   background-color: #eef;
 }
@@ -179,7 +179,7 @@ pre > code {
   vertical-align: middle;
 }
 .icon > svg path {
-  fill: #0055ff;
+  fill: #2A4FA0;
 }
 
 /********************
@@ -210,7 +210,7 @@ pre > code {
 }
 
 .welcome .slick .prompt {
-  background-color: #0055ff;
+  background-color: #2A4FA0;
   color: white;
   max-width: 450px;
   margin: 0 auto 0.5em auto;
@@ -219,7 +219,7 @@ pre > code {
   transition: 0.3s;
 }
 .welcome .slick .prompt:hover, .welcome .slick .prompt:active, .welcome .slick .prompt:focus {
-  background-color: #3377ff;
+  background-color: #3563c8;
 }
 
 .button-forward {
@@ -229,11 +229,46 @@ pre > code {
   float: right;
 }
 
+.welcome-player-buttons-prev {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.welcome-player-buttons-prev a {
+  background: url("../img/icons/button_prev.svg");
+  background-size: 48px;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  line-height: 56px;
+  margin: 0;
+  padding: 0;
+  z-index: 10000;
+}
+
+.welcome-player-buttons-next {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+.welcome-player-buttons-next a {
+  background: url("../img/icons/button_next.svg");
+  background-size: 48px;
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  line-height: 56px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  z-index: 10000;
+}
+
 .welcome .slick p {
   text-align: left;
   max-width: 450px;
   margin: 0 auto 1em auto;
-  font-size: 14.875px;
+  font-size: 14px;
 }
 .welcome .slick p img {
   max-width: 100%;
@@ -247,24 +282,24 @@ pre > code {
 }
 @media screen and (min-height: 600px) {
   .welcome .slick p {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 
 .styled-button {
   border: none;
-  background: #0055ff;
+  background: #2A4FA0;
   border-radius: 5px;
   color: #ffffff;
   padding: 0.5em 1em;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
   -webkit-appearance: none;
   transition: 0.3s;
 }
 .styled-button:hover, .styled-button:active, .styled-button:focus {
-  background-color: #3377ff;
+  background-color: #3563c8;
 }
 
 .prompt-big .styled-button {
@@ -282,7 +317,7 @@ pre > code {
 }
 
 .slick-dots li.slick-active button:before {
-  color: #0055ff !important;
+  color: #2A4FA0 !important;
   opacity: 1 !important;
 }
 
@@ -310,7 +345,7 @@ pre > code {
 ********************/
 .partner-logos {
   display: block;
-  border-top: 1px solid #ffffff;
+  border-top: 2px solid #2A4FA0;
   padding-top: 1em;
   text-align: right;
 }
@@ -342,7 +377,7 @@ pre > code {
 
 .site-header {
   height: 96px;
-  background-color: #0055ff;
+  background-color: #2A4FA0;
   text-align: center;
 }
 
@@ -368,7 +403,7 @@ pre > code {
   transition: 0.3s;
 }
 .site-header-back-button img:hover, .site-header-back-button img:active, .site-header-back-button img:focus {
-  background-color: #3377ff;
+  background-color: #3563c8;
 }
 
 .site-header-menu-button {
@@ -382,7 +417,7 @@ pre > code {
   transition: 0.3s;
 }
 .site-header-menu-button img:hover, .site-header-menu-button img:active, .site-header-menu-button img:focus {
-  background-color: #3377ff;
+  background-color: #3563c8;
 }
 
 .site-title img {
@@ -432,7 +467,7 @@ pre > code {
 .slide-menu h1, .slide-menu h2, .slide-menu h3, .slide-menu h4, .slide-menu h5, .slide-menu h6 {
   margin: 0;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
 }
 .slide-menu ul {
   max-width: -webkit-calc(800px - (30px * 2));
@@ -478,8 +513,8 @@ pre > code {
   background-color: #0055ff;
   background-size: 100%;
   color: #fafafa;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   display: inline-block;
   font-size: 20px;
   border-radius: 2px;
@@ -491,14 +526,14 @@ pre > code {
 }
 @media screen and (max-width: 640px) {
   .post-list li a {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
   }
 }
 
 .post-meta {
-  font-size: 14.875px;
-  color: #0055ff;
+  font-size: 14px;
+  color: #2A4FA0;
 }
 
 .post-link {
@@ -510,11 +545,11 @@ pre > code {
   text-align: center;
   line-height: 0;
   display: block;
-  margin-top: 32px;
+  margin-top: 27px;
 }
 @media screen and (max-width: 640px) {
   .post-item {
-    margin-top: 28px;
+    margin-top: 27px;
   }
 }
 
@@ -538,46 +573,45 @@ pre > code {
 
 .post-title-episode {
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #ffffff;
 }
 .post-title-episode .post-header-stop-id {
   color: #ffffff;
   display: inline-block;
-  font-size: 26px;
-  line-height: 26px;
+  font-size: 20px;
+  line-height: 20px;
   text-align: center;
   vertical-align: center;
   border-radius: 2px;
   margin: 0 auto;
   background-size: 100%;
   color: #fafafa;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
 }
 .post-title-episode .post-header-stop-id span {
   text-align: center;
   line-height: 0;
   display: inline-block;
-  margin-top: 32px;
+  margin-top: 27px;
 }
 .post-title-episode .post-header-section-title {
   display: inline-block;
-  color: white;
-  font-size: 26px;
-  line-height: 26px;
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 20px;
   margin-top: 0;
   margin-bottom: 0.25em;
   text-align: center;
 }
 .post-title-episode .post-header-title {
-  color: #3377ff;
-  font-size: 20px;
-  line-height: 26px;
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 28px;
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;
   padding-top: 0.5em;
-  border-top: 1px solid #ffffff;
+  border-top: 2px solid #2A4FA0;
   text-align: left;
 }
 
@@ -594,7 +628,7 @@ pre > code {
 }
 .post-content h3 {
   font-size: 20px;
-  color: #3377ff;
+  color: #3563c8;
 }
 .post-content h4 {
   font-size: 18px;
@@ -657,7 +691,7 @@ Audio Player Styling
 }
 
 .audio-footer-container {
-  background-color: #001a4d;
+  background-color: #15274f;
   bottom: 0;
   left: 0;
   right: 0;
@@ -690,7 +724,7 @@ Audio Player Styling
 }
 
 .player-buttons {
-  height: 64px;
+  height: 56px;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -700,13 +734,13 @@ Audio Player Styling
   float: right;
   line-height: 48px;
   vertical-align: top;
-  color: #0055ff;
+  color: #FFFFFF;
 }
 .player-buttons .player-buttons-next-number {
   float: left;
   line-height: 48px;
   vertical-align: top;
-  color: #0055ff;
+  color: #FFFFFF;
 }
 .player-buttons .player-buttons-prev {
   display: inline-block;
@@ -720,7 +754,7 @@ Audio Player Styling
   width: 48px;
   height: 48px;
   display: inline-block;
-  line-height: 64px;
+  line-height: 56px;
   margin: 0;
   padding: 0;
   z-index: 10000;
@@ -737,7 +771,7 @@ Audio Player Styling
   width: 48px;
   height: 48px;
   display: inline-block;
-  line-height: 64px;
+  line-height: 56px;
   margin: 0;
   padding: 0;
   text-align: right;
@@ -746,16 +780,16 @@ Audio Player Styling
 
 .jp-progress {
   width: 100%;
-  height: 10px;
+  height: 5px;
   margin: 0 0 0 0;
   border-radius: 3px;
-  background-color: #0044cc;
+  background-color: #25458c;
 }
 
 .jp-play-bar {
-  height: 10px;
+  height: 5px;
   border-radius: 3px;
-  background-color: #99bbff;
+  background-color: #84a1df;
 }
 
 .jp-controls button.jp-play {
@@ -768,7 +802,7 @@ Audio Player Styling
   border-radius: 32px !important;
 }
 .jp-controls button.jp-play:hover {
-  border-color: #0055ff !important;
+  border-color: #2A4FA0 !important;
 }
 
 .jp-state-playing button.jp-play {
