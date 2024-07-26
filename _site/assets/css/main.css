@@ -96,12 +96,12 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #2A4FA0;
+  color: #84a1df;
   text-decoration: none;
   transition: 0.2s;
 }
 a:hover {
-  color: #84a1df;
+  color: #5c82d4;
   text-decoration: none;
 }
 
