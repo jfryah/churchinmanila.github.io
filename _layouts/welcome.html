@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+  	{% include tagmanager.html %}
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper welcome">
+      	<div class="slick-container-container">
+	      	<div class="slick-container">
+		      	<div class="slick">
+		    		<div>
+						<h2 class="centered">Welcome to the History Center of the Church in Manila!</h2>
+						<p>We invite you on a journey through time to discover how the Lord’s recovery reached the Philippine shores, leading to the birth of the Church in Manila in the 1930s. Witness the remarkable blessings of the church as it overcame challenges over the decades, right up to the present day. Explore our rich history, celebrate our heritage, and be part of the ongoing divine story.</p>
+						<br>
+						<div class="prompt slick-slide-to-next">Swipe for tour instructions
+						<span class="button-forward">
+	      					<img src="{{ site.baseurl }}/assets/img/icons/button_forward.png"/>
+	    				</span>
+	    				</div>
+					</div>
+					<div>
+						<p>To listen to the audio narration for a specific section, simply tap the number corresponding to the headphone icon displayed on the exhibit.</p>
+						<br>
+						<p>
+							<img class="welcome-example-icon slick-slide-to-next" src="{{ site.baseurl }}/assets/img/welcome/headphones-icon.png"/>
+						</p>
+					</div>
+					<div>
+						<p>For swift navigation through various sections, tap the menu icon and select your desired audio stop.</p>
+						<br>
+						<p>
+							<img class="screenshot slick-slide-to-next" src="{{ site.baseurl }}/assets/img/welcome/menu.jpg"/>
+						</p>
+					</div>
+					<div>
+						<p>Tap the forward or backward icon to navigate to the next or previous audio stop, respectively.</p>
+						<br>
+						<p>
+							<img class="screenshot slick-slide-to-next" src="{{ site.baseurl }}/assets/img/welcome/navigation.jpg"/>
+						</p>
+					</div>
+					<div>
+						<br/>
+						<br>
+						<p class="centered"><a href="{{ site.baseurl }}/">And now, let&rsquo;s begin!</a></p>
+						<br>
+						<br>
+						<p class="centered">
+							<a href="{{ site.baseurl }}/" class="prompt-big"><button class="styled-button"><img src="{{ site.baseurl }}/assets/img/icons/button_forward.png"/></button></a>
+						</p>
+					</div>
+		    	</div>
+		    </div>
+		</div>
+	    <div id="arrows-container">
+	    </div>
+
+        {{ content }}
+      </div>
+	  <br>
+      	    <p class="skip-text">
+	    	<a href="{{ site.baseurl }}/">
+				Skip audio instructions. Proceed to the tour.
+	    	</a>
+	    </p>
+    </div>
+
+  </body>
+
+</html>
